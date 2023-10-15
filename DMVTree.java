@@ -42,14 +42,14 @@ public class DMVTree {
             this.receipt  = new ArrayList();
         }
         
-        public void addFees(Fee transaction) {
+        public void addFee(Fee transaction) {
             this.sum += transaction.amount;
             receipt.add(transaction);
         }
         
         public void displayReceipt() {
-            for (Fee t : receipt) {
-                System.out.println(t.name + ": " + t.amount);
+            for (Fee f : receipt) {
+                System.out.println(f.name + ": " + f.amount);
             }
             System.out.println("Total: " + this.sum + "\n");
         }
@@ -77,7 +77,7 @@ public class DMVTree {
      
     public void traverse(TreeNode node, User user) {
         if (node == null) return;
-        user.addFees(new Fee(node.name, node.value));
+        user.addFee(new Fee(node.name, node.value));
         
         String nextStep = user.info.poll();
         TreeNode nextNode = null;

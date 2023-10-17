@@ -39,7 +39,7 @@ public class DMVTree {
         public User(Queue<String> info) {
             this.sum = 0;
             this.info = info;
-            this.receipt  = new ArrayList();
+            this.receipt  = new ArrayList<>();
         }
         
         public void addFee(Fee transaction) {
@@ -92,12 +92,12 @@ public class DMVTree {
     }
     
     public void run() {
-        Queue<String> info1 = new LinkedList(Arrays.asList("inState", "lateReg"));
+        Queue<String> info1 = new LinkedList<>(Arrays.asList("inState", "lateReg"));
         User user1 = new User(info1);
         traverse(baseFee, user1);
         user1.displayReceipt();
         
-        Queue<String> info2 = new LinkedList(Arrays.asList("outState", "notLateReg"));
+        Queue<String> info2 = new LinkedList<>(Arrays.asList("outState", "notLateReg"));
         User user2 = new User(info2);
         traverse(baseFee, user2);
         user2.displayReceipt();

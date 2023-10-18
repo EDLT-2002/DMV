@@ -1,4 +1,5 @@
 import java.util.*;
+import java.text.*;
 
 public class DMVTree {
     public class TreeNode {
@@ -35,6 +36,7 @@ public class DMVTree {
         private Queue<String> info;
         private List<Fee> receipt;
         private double sum;
+        private NumberFormat currency;
         
         public User(Queue<String> info) {
             this.sum = 0;
@@ -48,10 +50,11 @@ public class DMVTree {
         }
         
         public void displayReceipt() {
+            currency = NumberFormat.getCurrencyInstance();
             for (Fee f : receipt) {
-                System.out.println(f.name + ": " + f.amount);
+                System.out.println(f.name + ": " + currency.format(f.amount));
             }
-            System.out.println("Total: " + this.sum + "\n");
+            System.out.println("Total: " + currency.format(this.sum) + "\n");
         }
     }
 

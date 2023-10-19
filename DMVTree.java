@@ -105,9 +105,12 @@ public class DMVTree {
         traverse(baseFee, user2);
         user2.displayReceipt();
     }
-    
+}
+
+class DMVDriver {
     public static void main(String[] args) {
         DMVTree tree = new DMVTree();
         tree.run();
     }
 }
+

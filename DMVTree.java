@@ -14,12 +14,12 @@ public class DMVTree {
     public void run() {
          TreeNode baseFees = initializeTree();
          
-        Queue<String> info1 = new LinkedList<>(Arrays.asList("inState", "lateReg"));
+        Queue<String> info1 = new LinkedList<>(Arrays.asList("inState", "LateReg", "< 1 month", "motorcycle"));
         User user1 = new User(info1);
         traverse(baseFees, user1);
         user1.displayReceipt();
         
-        Queue<String> info2 = new LinkedList<>(Arrays.asList("outState", "notLateReg"));
+        Queue<String> info2 = new LinkedList<>(Arrays.asList("outState", "notLateReg", "car"));
         User user2 = new User(info2);
         traverse(baseFee, user2);
         user2.displayReceipt();
@@ -30,13 +30,24 @@ public class DMVTree {
     TreeNode outState;
     TreeNode lateReg;
     TreeNode notLateReg;
+    TreeNode lateReg1;
+    TreeNode lateReg2;
+    TreeNode car;
+    TreeNode commercial;
+    TreeNode motorcycle;
     
     private TreeNode initializeTree() {
         baseFee = new TreeNode(100, "baseFee");
         inState = new TreeNode(10, "inState");
         outState = new TreeNode(50, "outState");
-        lateReg = new TreeNode(25, "lateReg");
+        lateReg = new TreeNode(0, "LateReg");
+        lateReg2 = new TreeNode(50, "> 1 month");
+        lateReg1 = new TreeNode(20, "< 1 month");
         notLateReg = new TreeNode(0, "notLateReg");
+        car = new TreeNode(30, "car");
+        commercial = new TreeNode(35, "commercial");
+        motorcycle = new TreeNode(25, "motorcycle");
+        
         
         baseFee.addChild(inState);
         baseFee.addChild(outState);
@@ -44,6 +55,17 @@ public class DMVTree {
         inState.addChild(notLateReg);
         outState.addChild(lateReg);
         outState.addChild(notLateReg);
+        lateReg.addChild(lateReg1);
+        lateReg.addChild(lateReg2);
+        lateReg1.addChild(car);
+        lateReg1.addChild(commercial);
+        lateReg1.addChild(motorcycle);
+        lateReg2.addChild(car);
+        lateReg2.addChild(commercial);
+        lateReg2.addChild(motorcycle);
+        notLateReg.addChild(car);
+        notLateReg.addChild(commercial);
+        notLateReg.addChild(motorcycle);
         
         return baseFee;
     }

@@ -21,7 +21,7 @@ public class DMVTree {
         
         Queue<String> info2 = new LinkedList<>(Arrays.asList("outState", "notLateReg", "car"));
         User user2 = new User(info2);
-        traverse(baseFee, user2);
+        traverse(baseFees, user2);
         user2.displayReceipt();
     }
 
